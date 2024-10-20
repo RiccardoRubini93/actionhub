@@ -1,0 +1,65 @@
+[
+    {
+        "name":"brand",
+        "label":"brand",
+        "description":"Please select the brand",
+        "type":"select",
+        "default":"",
+        "interactive":false,
+        "required":true,
+        "options": [
+            {
+                "name": "CLZ",
+                "label": "Calzedonia"
+            },
+            {
+                "name": "INT",
+                "label": "Intimissimi"                
+            },
+            {
+                "name": "TEZ",
+                "label": "Tezenis"                
+            },
+            {
+                "name": "FAL",
+                "label": "Falconeri"                
+            }
+        ] 
+    },
+    {
+        "name":"segment_name",
+        "label":"Segment Name",
+        "description":"Segment Name",
+        "type":"text",
+        "default":"",
+        "interactive":false,
+        "required":true
+    },
+    {
+        "name":"category_id",
+        "label":"Category Id",
+        "description":"Category  (default=1105346)",
+        "type":"text",
+        "default":"",
+        "interactive":false,
+        "required":false
+    },
+    {
+        "name":"frequency",
+        "label":"Frequency",
+        "description":"Frequency (default=1)",
+        "type":"text",
+        "default":"",
+        "interactive":false,
+        "required":false
+    },
+    {
+        "name":"ttl",
+        "label":"TTL",
+        "description":"TTL (default=10)",
+        "type":"text",
+        "default":"",
+        "interactive":false,
+        "required":false
+    }
+]

@@ -1,0 +1,56 @@
+[
+    {
+        "name":"brand",
+        "label":"brand",
+        "description":"Please select the brand",
+        "type":"select",
+        "default":"",
+        "interactive":false,
+        "required":true,
+        "options": [
+            {
+                "name": "CLZ",
+                "label": "Calzedonia"
+            },
+            {
+                "name": "INT",
+                "label": "Intimissimi"                
+            },
+            {
+                "name": "TEZ",
+                "label": "Tezenis"                
+            },
+            {
+                "name": "FAL",
+                "label": "Falconeri"                
+            }
+        ] 
+    },
+    {
+        "name":"path_sftp",
+        "label":"File Path",
+        "description":"Path where you want to save the file inside SFTP server (e.g.: /Export)",
+        "type":"text",
+        "default":"/",
+        "interactive":false,
+        "required":true
+    },
+    {
+        "name":"dataset_id",
+        "label":"Dataset ID",
+        "description":"Enter the Dataset ID if you want to send the data into BQ",
+        "type":"text",
+        "default":"",
+        "interactive":false,
+        "required":false
+    },
+    {
+        "name":"table_id",
+        "label":"Table ID",
+        "description":"Enter the Table ID if you want to send the data into BQ",
+        "type":"text",
+        "default":"",
+        "interactive":false,
+        "required":false
+    }
+]

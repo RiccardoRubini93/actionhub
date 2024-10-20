@@ -1,0 +1,142 @@
+[
+    {
+        "name":"brand",
+        "label":"brand",
+        "description":"Please select the brand",
+        "type":"select",
+        "default":"",
+        "interactive":false,
+        "required":true,
+        "options": [
+            {
+                "name": "CLZ",
+                "label": "Calzedonia"
+            },
+            {
+                "name": "INT",
+                "label": "Intimissimi"                
+            },
+            {
+                "name": "TEZ",
+                "label": "Tezenis"                
+            },
+            {
+                "name": "FAL",
+                "label": "Falconeri"                
+            }
+        ] 
+    },
+    {
+        "name":"country",
+        "label":"country",
+        "description":"Please select the country",
+        "type":"select",
+        "default":"",
+        "interactive":false,
+        "required":true,
+        "options": [
+            {
+                "name": "AT",
+                "label": "AT"                
+            },
+            {
+                "name": "BE",
+                "label": "BE"                
+            },
+            {
+                "name": "BR",
+                "label": "BR"                
+            },
+            {
+                "name": "CH",
+                "label": "CH"                
+            },
+            {
+                "name": "CZ",
+                "label": "CZ"                
+            },
+            {
+                "name": "DE",
+                "label": "DE"                
+            },
+            {
+                "name": "ES",
+                "label": "ES"                
+            },
+            {
+                "name": "FR",
+                "label": "FR"                
+            },
+            {
+                "name": "HU",
+                "label": "HU"                
+            },
+            {
+                "name": "IT",
+                "label": "IT"
+            },
+            {
+                "name": "JP",
+                "label": "JP"
+            },
+            {
+                "name": "MX",
+                "label": "MX"                
+            },
+            {
+                "name": "NL",
+                "label": "NL"                
+            },
+            {
+                "name": "PL",
+                "label": "PL"                
+            },
+            {
+                "name": "PT",
+                "label": "PT"                
+            },
+            {
+                "name": "SE",
+                "label": "SE"                
+            },
+            {
+                "name": "SK",
+                "label": "SK"                
+            },
+            {
+                "name": "UA",
+                "label": "UA"                
+            },
+            {
+                "name": "UK",
+                "label": "UK"                
+            },
+            {
+                "name": "US",
+                "label": "US"                
+            },
+            {
+                "name": "TEST",
+                "label": "TEST"                
+            }
+        ] 
+    },
+    {
+        "name":"segment_name",
+        "label":"segment name",
+        "description":"Segment Name",
+        "type":"text",
+        "default":"",
+        "interactive":false,
+        "required":true
+    },
+    {
+        "name":"ttl",
+        "label":"TTL",
+        "description":"TTL in days (default=10)",
+        "type":"text",
+        "default":"",
+        "interactive":false,
+        "required":false
+    }
+]
