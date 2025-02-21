@@ -1,0 +1,79 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: looker-action-hub-dev
+  namespace: '934196877920'
+  selfLink: /apis/serving.knative.dev/v1/namespaces/934196877920/services/looker-action-hub-dev
+  uid: 7d838705-4057-4f71-b8ae-424725c71b84
+  resourceVersion: AAYs/gHbkFk
+  generation: 2
+  creationTimestamp: '2025-01-30T10:15:53.597692Z'
+  labels:
+    cloud.googleapis.com/location: europe-west1
+  annotations:
+    serving.knative.dev/creator: cloud-run-deployer@c4m-customer-activation.iam.gserviceaccount.com
+    serving.knative.dev/lastModifier: cloud-run-deployer@c4m-customer-activation.iam.gserviceaccount.com
+    run.googleapis.com/build-enable-automatic-updates: 'false'
+    run.googleapis.com/build-id: 39558593-1151-4c43-870e-61f1308fd3e4
+    run.googleapis.com/build-image-uri: europe-west1-docker.pkg.dev/c4m-customer-activation/cloud-run-source-deploy/looker-action-hub-dev
+    run.googleapis.com/build-name: projects/934196877920/locations/global/builds/39558593-1151-4c43-870e-61f1308fd3e4
+    run.googleapis.com/client-name: gcloud
+    run.googleapis.com/client-version: 508.0.0
+    run.googleapis.com/operation-id: 4816f72b-e2e1-4549-8053-93d13bef12b6
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+    run.googleapis.com/urls: '["https://looker-action-hub-dev-934196877920.europe-west1.run.app","https://looker-action-hub-dev-xvktesitfq-ew.a.run.app"]'
+spec:
+  template:
+    metadata:
+      labels:
+        client.knative.dev/nonce: pdbxhnqoft
+        run.googleapis.com/startupProbeType: Default
+      annotations:
+        autoscaling.knative.dev/maxScale: '100'
+        run.googleapis.com/client-name: gcloud
+        run.googleapis.com/client-version: 508.0.0
+        run.googleapis.com/startup-cpu-boost: 'true'
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      serviceAccountName: looker-actionhub-runner@c4m-customer-activation.iam.gserviceaccount.com
+      containers:
+      - image: europe-west1-docker.pkg.dev/c4m-customer-activation/cloud-run-source-deploy/looker-action-hub-dev@sha256:fcf3c33d467261ad0f90325ab978efd4ec5b29619b150884ade7f30aa7bccad3
+        ports:
+        - name: http1
+          containerPort: 8080
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+        startupProbe:
+          timeoutSeconds: 240
+          periodSeconds: 240
+          failureThreshold: 1
+          tcpSocket:
+            port: 8080
+  traffic:
+  - percent: 100
+    latestRevision: true
+status:
+  observedGeneration: 2
+  conditions:
+  - type: Ready
+    status: 'True'
+    lastTransitionTime: '2025-01-31T10:28:44.745817Z'
+  - type: ConfigurationsReady
+    status: 'True'
+    lastTransitionTime: '2025-01-31T10:28:43.648098Z'
+  - type: RoutesReady
+    status: 'True'
+    lastTransitionTime: '2025-01-31T10:28:44.707053Z'
+  latestReadyRevisionName: looker-action-hub-dev-00002-sb6
+  latestCreatedRevisionName: looker-action-hub-dev-00002-sb6
+  traffic:
+  - revisionName: looker-action-hub-dev-00002-sb6
+    percent: 100
+    latestRevision: true
+  url: https://looker-action-hub-dev-xvktesitfq-ew.a.run.app
+  address:
+    url: https://looker-action-hub-dev-xvktesitfq-ew.a.run.app

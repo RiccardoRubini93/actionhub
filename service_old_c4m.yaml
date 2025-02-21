@@ -1,0 +1,165 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: looker-actionhub
+  namespace: '780263954234'
+  selfLink: /apis/serving.knative.dev/v1/namespaces/780263954234/services/looker-actionhub
+  uid: ae671a4f-df94-4d0e-930e-d8050a256fd1
+  resourceVersion: AAYsKeWMrGY
+  generation: 26
+  creationTimestamp: '2023-02-03T08:18:02.683040Z'
+  labels:
+    cloud.googleapis.com/location: europe-west1
+  annotations:
+    serving.knative.dev/creator: terraform@prod-cross-cloud4marketing.iam.gserviceaccount.com
+    serving.knative.dev/lastModifier: deployer-access@prod-cross-cloud4marketing.iam.gserviceaccount.com
+    run.googleapis.com/build-enable-automatic-updates: 'false'
+    run.googleapis.com/build-id: fdb28850-5504-40f0-9ae8-ebcf8119c51f
+    run.googleapis.com/build-image-uri: europe-west1-docker.pkg.dev/prod-cross-cloud4marketing/cloud-run-source-deploy/looker-actionhub
+    run.googleapis.com/build-name: projects/780263954234/locations/global/builds/fdb28850-5504-40f0-9ae8-ebcf8119c51f
+    run.googleapis.com/client-name: gcloud
+    run.googleapis.com/client-version: 502.0.0
+    run.googleapis.com/operation-id: e6e16417-2f20-4d62-959d-fc35de1c2bdd
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+    run.googleapis.com/urls: '["https://looker-actionhub-780263954234.europe-west1.run.app","https://looker-actionhub-b3hmlf2fiq-ew.a.run.app"]'
+spec:
+  template:
+    metadata:
+      labels:
+        client.knative.dev/nonce: iojkasksaf
+        run.googleapis.com/startupProbeType: Default
+      annotations:
+        autoscaling.knative.dev/maxScale: '100'
+        run.googleapis.com/client-name: gcloud
+        run.googleapis.com/client-version: 502.0.0
+        run.googleapis.com/startup-cpu-boost: 'true'
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 600
+      serviceAccountName: looker-actionhub@prod-cross-cloud4marketing.iam.gserviceaccount.com
+      containers:
+      - name: looker-actionhub-1
+        image: europe-west1-docker.pkg.dev/prod-cross-cloud4marketing/cloud-run-source-deploy/looker-actionhub@sha256:d73d81087bb6395caefd7ca151b3eeb380b0734473aaccaca6cc45270bdb5919
+        ports:
+        - name: http1
+          containerPort: 8080
+        env:
+        - name: DataProviderId
+          value: '12574'
+        - name: CategoryId
+          value: '1105346'
+        - name: Ttl
+          value: '10'
+        - name: Fee
+          value: '0'
+        - name: Frequency
+          value: '1'
+        - name: Status
+          value: active
+        - name: ProviderTitle
+          value: calzedonia-client
+        - name: adform_client_id
+          value: dmp.calzedonia.it@clients.adform.com
+        - name: days_check_updates
+          value: '365'
+        - name: sfmcSftpHost
+          value: ftp.s7.exacttarget.com
+        - name: sfmcSftpUsernameFal
+          value: '7280423'
+        - name: sfmcSftpUsernameInt
+          value: '7276786'
+        - name: sfmcSftpUsernameTez
+          value: '7276785'
+        - name: sfmcSftpUsernameClz
+          value: '7280424'
+        - name: sfmcSftpPort
+          value: '22'
+        - name: GOOGLE_ADS_CLIENT_ID
+          value: 1065367358508-f9ev2bdig155ks4ca03cqd2najp85qui.apps.googleusercontent.com
+        - name: GOOGLE_ADS_LOGIN_CUSTOMER_ID
+          value: '9352475496'
+        - name: adform_aws_secret_key
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: adform_aws_secret_key
+        - name: adform_aws_access_key
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: adform_aws_access_key
+        - name: adform_client_secret
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: adform_client_secret
+        - name: sfmc_sftp_password_clz
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: sfmc_sftp_password_clz
+        - name: sfmc_sftp_password_int
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: sfmc_sftp_password_int
+        - name: sfmc_sftp_password_tez
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: sfmc_sftp_password_tez
+        - name: sfmc_sftp_password_fal
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: sfmc_sftp_password_fal
+        - name: GOOGLE_ADS_DEVELOPER_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: google_ads_developer_token
+        - name: GOOGLE_ADS_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: google_ads_client_secret
+        - name: GOOGLE_ADS_REFRESH_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: google_ads_refresh_token
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 2Gi
+        startupProbe:
+          timeoutSeconds: 240
+          periodSeconds: 240
+          failureThreshold: 1
+          tcpSocket:
+            port: 8080
+  traffic:
+  - percent: 100
+    latestRevision: true
+status:
+  observedGeneration: 26
+  conditions:
+  - type: Ready
+    status: 'True'
+    lastTransitionTime: '2025-01-20T21:25:16.746854Z'
+  - type: ConfigurationsReady
+    status: 'True'
+    lastTransitionTime: '2025-01-20T21:25:16.350520Z'
+  - type: RoutesReady
+    status: 'True'
+    lastTransitionTime: '2025-01-20T21:25:16.714336Z'
+  latestReadyRevisionName: looker-actionhub-00026-2v6
+  latestCreatedRevisionName: looker-actionhub-00026-2v6
+  traffic:
+  - revisionName: looker-actionhub-00026-2v6
+    percent: 100
+    latestRevision: true
+  url: https://looker-actionhub-b3hmlf2fiq-ew.a.run.app
+  address:
+    url: https://looker-actionhub-b3hmlf2fiq-ew.a.run.app

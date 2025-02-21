@@ -1,0 +1,139 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: looker-action-hub-${ENV}-v2
+  namespace: '934196877920'
+  labels:
+    cloud.googleapis.com/location: europe-west1
+  annotations:
+    serving.knative.dev/creator: cloud-run-deployer@c4m-customer-activation.iam.gserviceaccount.com
+    serving.knative.dev/lastModifier: cloud-run-deployer@c4m-customer-activation.iam.gserviceaccount.com
+    run.googleapis.com/build-enable-automatic-updates: 'false'
+    run.googleapis.com/client-name: gcloud
+    run.googleapis.com/client-version: 508.0.0
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+spec:
+  template:
+    metadata:
+      labels:
+        client.knative.dev/nonce: pdbxhnqoft
+        run.googleapis.com/startupProbeType: Default
+      annotations:
+        autoscaling.knative.dev/maxScale: '100'
+        run.googleapis.com/client-name: gcloud
+        run.googleapis.com/client-version: 508.0.0
+        run.googleapis.com/startup-cpu-boost: 'true'
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 600  # Updated to match old config
+      serviceAccountName: looker-actionhub-runner@c4m-customer-activation.iam.gserviceaccount.com
+      containers:
+      - image: europe-west1-docker.pkg.dev/c4m-customer-activation/cloud-run-source-deploy/looker-action-hub-dev@sha256:fcf3c33d467261ad0f90325ab978efd4ec5b29619b150884ade7f30aa7bccad3
+        ports:
+        - name: http1
+          containerPort: 8080
+        env:
+        - name: DataProviderId
+          value: '12574'
+        - name: CategoryId
+          value: '1105346'
+        - name: Ttl
+          value: '10'
+        - name: Fee
+          value: '0'
+        - name: Frequency
+          value: '1'
+        - name: Status
+          value: active
+        - name: ProviderTitle
+          value: calzedonia-client
+        - name: adform_client_id
+          value: dmp.calzedonia.it@clients.adform.com
+        - name: days_check_updates
+          value: '365'
+        - name: sfmcSftpHost
+          value: ftp.s7.exacttarget.com
+        - name: sfmcSftpUsernameFal
+          value: '7280423'
+        - name: sfmcSftpUsernameInt
+          value: '7276786'
+        - name: sfmcSftpUsernameTez
+          value: '7276785'
+        - name: sfmcSftpUsernameClz
+          value: '7280424'
+        - name: sfmcSftpPort
+          value: '22'
+        - name: GOOGLE_ADS_CLIENT_ID
+          value: 1065367358508-f9ev2bdig155ks4ca03cqd2najp85qui.apps.googleusercontent.com
+        - name: GOOGLE_ADS_LOGIN_CUSTOMER_ID
+          value: '9352475496'
+        - name: adform_aws_secret_key
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: adform_aws_secret_key_${ENV}
+        - name: adform_aws_access_key
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: adform_aws_access_key_${ENV}
+        - name: adform_client_secret
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: adform_client_secret_${ENV}
+        - name: sfmc_sftp_password_clz
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: sfmc_sftp_password_clz_${ENV}
+        - name: sfmc_sftp_password_int
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: sfmc_sftp_password_int_${ENV}
+        - name: sfmc_sftp_password_tez
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: sfmc_sftp_password_tez_${ENV}
+        - name: sfmc_sftp_password_fal
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: sfmc_sftp_password_fal_${ENV}
+        - name: GOOGLE_ADS_DEVELOPER_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: google_ads_developer_token_${ENV}
+        - name: GOOGLE_ADS_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: google_ads_client_secret_${ENV}
+        - name: GOOGLE_ADS_REFRESH_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: google_ads_refresh_token_${ENV}
+        #tiktok auth token env variable
+        - name: TIKTOK_ACCESS_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: tiktok_access_token
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 2Gi  # Updated memory limit to match old config
+        startupProbe:
+          timeoutSeconds: 240
+          periodSeconds: 240
+          failureThreshold: 1
+          tcpSocket:
+            port: 8080
+  traffic:
+  - percent: 100
+    latestRevision: true
